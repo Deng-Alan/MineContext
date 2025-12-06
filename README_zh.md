@@ -4,7 +4,7 @@
   <img alt="MineContext" src="src/MineContext-Banner.svg" width="100%" height="auto">
 </picture>
 
-### MineContext：洞察本质，激发创造
+### MineContext（中文版）：洞察本质，激发创造
 
 一个开源、主动的上下文感知 AI 伙伴，致力于让您的工作、学习与创作更加清晰高效。
 
