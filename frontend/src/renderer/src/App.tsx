@@ -23,7 +23,7 @@ import { getLogger } from '@shared/logger/renderer'
 import { useMemoizedFn } from 'ahooks'
 
 const logger = getLogger('App.tsx')
-const isEnglish = true // Hardcode for now, will change later
+const isEnglish = false // Hardcode for now, use Simplified Chinese by default
 interface BackendStatusInfo {
   status: BackendStatus
   port: number

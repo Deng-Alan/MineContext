@@ -77,11 +77,10 @@ const Files: React.FC = () => {
         <div className="flex justify-between items-start mb-3 px-2 max-md:flex-col max-md:items-stretch">
           <div className="w-3/5 max-md:w-full">
             <Title heading={3} style={{ marginTop: 5, fontWeight: 700, fontSize: 24 }}>
-              Upload Your Files
+              上传文件
             </Title>
             <Text type="secondary" style={{ width: 519, fontSize: 12 }}>
-              Upload screenshots and docs—MineContext auto-organizes tasks and generates summaries. Simplify work
-              reviews and planning, and save your energy for what truly matters ✨
+              上传截图和文档，MineContext 会自动整理任务并生成摘要，帮助你轻松回顾与规划工作，把精力留给真正重要的事情 ✨
             </Text>
           </div>
           <div className="flex items-center ml-6 max-md:ml-0 max-md:mt-4 max-md:justify-end"></div>
@@ -106,7 +105,7 @@ const Files: React.FC = () => {
                 <div className="text-center flex flex-col items-center justify-center">
                   <img src={uploadIcon} alt="Screen recording" style={{ width: 214 }} />
                   <Text style={{ color: '#0C0D0E', fontSize: 14, fontWeight: 700, marginTop: 10 }}>
-                    Drop or select your files here
+                    将文件拖拽到此处，或点击选择文件
                   </Text>
                   <Text style={{ color: '#6C7191', fontSize: 13, marginTop: 6 }}>ppt, pdf, pptx, word</Text>
                 </div>
@@ -117,7 +116,7 @@ const Files: React.FC = () => {
 
         <div className="mt-[50px]">
           <Title heading={5} style={{ marginTop: 5, fontWeight: 700, fontSize: 24 }}>
-            Analyzed Documents
+            已分析文档
           </Title>
           <Row gutter={[24, 24]} style={{ marginTop: 20 }}>
             {analyzedDocs.map((doc, index) => (
@@ -162,12 +161,12 @@ const Files: React.FC = () => {
                     {doc.status === 'Analyzing' ? (
                       <>
                         <IconLoading style={{ marginRight: 6 }} />
-                        <span>Analyzing</span>
+                        <span>分析中</span>
                       </>
                     ) : (
                       <>
                         <IconCheckCircleFill style={{ marginRight: 6, color: '#00B42A' }} />
-                        <span>Analysis successful</span>
+                        <span>分析完成</span>
                       </>
                     )}
                   </div>
@@ -180,7 +179,7 @@ const Files: React.FC = () => {
 
       {/* Analyze document modal */}
       <Modal
-        title="Analyze ducument"
+        title="文档分析"
         visible={analyzeVisible}
         autoFocus={false}
         focusLock={true}
@@ -188,11 +187,11 @@ const Files: React.FC = () => {
         footer={
           <>
             <Button onClick={() => setAnalyzeVisible(false)} style={{ fontSize: 12 }}>
-              Cancel
+              取消
             </Button>
             <Button type="primary" onClick={() => analyzeDocument()}>
               <img src={aiIcon} alt="AI icon" style={{ marginRight: 5 }} />
-              Smart analyze
+              智能分析
             </Button>
           </>
         }
@@ -215,18 +214,18 @@ const Files: React.FC = () => {
             </div>
             <div className="mt-4 relative">
               <Input.TextArea
-                placeholder="Input your desired analyze prompt (Quickly select from below)"
+                placeholder="请输入你希望 AI 分析的指令（也可以从下方快速选择）"
                 value={prompt}
                 onChange={setPrompt}
                 autoSize={{ minRows: 3, maxRows: 5 }}
                 style={{ fontSize: 12 }}
               />
               <div className="absolute bottom-3 left-3 flex gap-2">
-                <Tag onClick={() => setPrompt('Summary')} style={{ cursor: 'pointer', fontSize: 12 }}>
-                  Summary
+                <Tag onClick={() => setPrompt('总结')} style={{ cursor: 'pointer', fontSize: 12 }}>
+                  总结
                 </Tag>
-                <Tag onClick={() => setPrompt('Work Output')} style={{ cursor: 'pointer', fontSize: 12 }}>
-                  Work Output
+                <Tag onClick={() => setPrompt('工作产出')} style={{ cursor: 'pointer', fontSize: 12 }}>
+                  工作产出
                 </Tag>
               </div>
             </div>

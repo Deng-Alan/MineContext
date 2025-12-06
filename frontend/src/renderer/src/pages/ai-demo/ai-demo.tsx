@@ -20,17 +20,17 @@ const AIDemo = () => {
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-12">
             <Title heading={1} style={{ marginBottom: '16px', color: '#1d2129' }}>
-              AI Assistant Demo Page
+              AI 助手演示页
             </Title>
           </div>
 
           <Tabs activeTab={activeTab} onChange={setActiveTab}>
-            <TabPane key="demo" title="Function Demo">
+            <TabPane key="demo" title="功能演示">
               <Space direction="vertical" size="large" style={{ width: '100%' }}>
                 <Alert
                   type="info"
-                  title="Get Started"
-                  content="Please set your Doubao API key on the configuration page first, then click the AI button on the right to start a conversation!"
+                  title="开始使用"
+                  content="请先在设置页配置你的豆包 API Key，然后点击右侧的 AI 按钮即可开始对话！"
                   showIcon
                   style={{ marginBottom: '24px' }}
                 />

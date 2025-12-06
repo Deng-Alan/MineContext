@@ -58,12 +58,10 @@ const HomePage: React.FC = () => {
                   <div className="rounded-xl w-full flex justify-between items-start">
                     <div className="flex w-[639px] flex-col items-start gap-2">
                       <Title heading={3} style={{ marginTop: 5, fontWeight: 700, fontSize: 24 }}>
-                        Create with <span style={{ color: 'blue', fontWeight: 700 }}>Context</span>, Clarity from
-                        Chaos.👏
+                        在 <span style={{ color: 'blue', fontWeight: 700 }}>上下文</span> 中创作，让混乱化为清晰。👏
                       </Title>
                       <Text type="secondary" style={{ fontSize: 12 }}>
-                        Home 1s where MineContext proactively delivers your daily summaries, todos, tips and other
-                        insights—emerging from all your collected Contexts ✨
+                        这里是主页，MineContext 会主动为你推送每日 / 每周总结、待办、提示等洞察，全部基于你收集的上下文 ✨
                       </Text>
                     </div>
                     <AIToggleButton onClick={() => dispatch(toggleHomeAiAssistant(true))} isActive={isVisible} />
@@ -74,8 +72,8 @@ const HomePage: React.FC = () => {
                     <HeatmapEntry onChange={onChange} />
                     <ToDoCard selectedDays={selectedDays} />
                     <LatestActivityCard
-                      title="Latest activity"
-                      emptyText="No activity in the last 7 days. "
+                      title="最近活动"
+                      emptyText="最近 7 天还没有活动记录"
                       hasToDocButton
                     />
                     <DocColumnsCard vaultsList={recentVaults} />

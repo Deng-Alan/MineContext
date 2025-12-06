@@ -68,7 +68,7 @@ const LoadingComponent = ({ backendStatus }: { backendStatus: BackendStatus }) =
       <div style={{ appRegion: 'drag' } as React.CSSProperties} className="absolute top-0 left-0 w-full h-[30px]" />
       <img src={logo} alt="Logo" className="w-[100px] h-[100px]" />
       <Title className="text-white text-[32px] font-bold" style={{ marginBottom: '40px', marginTop: '24px' }}>
-        Welcome to MineContext
+        欢迎使用 MineContext
       </Title>
 
       {/* Dynamic progress bar */}
@@ -82,7 +82,7 @@ const LoadingComponent = ({ backendStatus }: { backendStatus: BackendStatus }) =
       />
 
       <Text className="text-gray-600 text-14" style={{ marginTop: '16px' }}>
-        It may take a few seconds to awaken your Context-Aware AI partner
+        唤醒你的上下文感知 AI 伙伴可能需要几秒钟，请稍候…
       </Text>
     </div>
   )

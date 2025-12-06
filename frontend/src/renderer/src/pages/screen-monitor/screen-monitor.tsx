@@ -461,7 +461,7 @@ const ScreenMonitor: React.FC = () => {
   const handleSave = useMemoizedFn(async () => {
     const values = form.getFieldsValue()
     if (![...(values.screenSources || []), ...(values.windowSources || [])].length) {
-      Message.info('Please select at least one screen or window')
+      Message.info('请至少选择一个屏幕或窗口')
       return
     }
     const screenList = screenAllSources?.filter((source) => values.screenSources?.includes(source.id)) || []
@@ -538,12 +538,12 @@ const ScreenMonitor: React.FC = () => {
 
         <Modal
           style={{ width: '60%', minHeight: '30%' }}
-          title="Display Screenshot"
+          title="截图预览"
           visible={!!selectedImage}
           onCancel={() => setSelectedImage(null)}
           footer={null}>
           {selectedImage && (
-            <Image src={selectedImage} alt="Display Screenshot" style={{ width: '100%', borderRadius: 8 }} />
+            <Image src={selectedImage} alt="截图预览" style={{ width: '100%', borderRadius: 8 }} />
           )}
         </Modal>
 

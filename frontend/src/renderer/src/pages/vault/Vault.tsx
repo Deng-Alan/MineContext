@@ -81,7 +81,7 @@ const VaultPage = () => {
             <Card className="vault-card">
               {loading || !vault ? (
                 <div className="flex justify-center items-center h-full text-[#333]">
-                  <Spin tip="Loading..." />
+                  <Spin tip="加载中..." />
                 </div>
               ) : error ? (
                 <div className="text-red-500">{error}</div>

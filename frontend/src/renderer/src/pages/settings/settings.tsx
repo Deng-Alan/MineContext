@@ -34,16 +34,16 @@ const CustomFormItems: FC<CustomFormItemsProps> = (props) => {
       <div className="flex flex-col gap-6 mb-6">
         <div className="flex flex-col gap-[8px]">
           <span className="text-[#0B0B0F] font-roboto text-base font-normal leading-[22px] ">
-            Vision language model
+            视觉语言模型
           </span>
           <FormItem
             field={`${prefix}-modelId`}
             className="!mb-0"
-            rules={[{ required: true, message: 'Cannot be empty' }]}
+            rules={[{ required: true, message: '不能为空' }]}
             requiredSymbol={false}>
             <Input
               addBefore={<InputPrefix label="Model name" />}
-              placeholder="A VLM model with visual understanding capabilities is required."
+              placeholder="需要具备视觉理解能力的多模态模型。"
               allowClear
               className="[&_.arco-input-inner-wrapper]: !w-[574px]"
             />
@@ -51,11 +51,11 @@ const CustomFormItems: FC<CustomFormItemsProps> = (props) => {
           <FormItem
             field={`${prefix}-baseUrl`}
             className="!mb-0"
-            rules={[{ required: true, message: 'Cannot be empty' }]}
+            rules={[{ required: true, message: '不能为空' }]}
             requiredSymbol={false}>
             <Input
               addBefore={<InputPrefix label="Base URL" />}
-              placeholder="Enter your base URL"
+              placeholder="请输入 Base URL"
               allowClear
               className="[&_.arco-input-inner-wrapper]: !w-[574px]"
             />
@@ -63,18 +63,18 @@ const CustomFormItems: FC<CustomFormItemsProps> = (props) => {
           <FormItem
             field={`${prefix}-apiKey`}
             className="!mb-0"
-            rules={[{ required: true, message: 'Cannot be empty' }]}
+            rules={[{ required: true, message: '不能为空' }]}
             requiredSymbol={false}>
             <Input
               addBefore={<InputPrefix label="API Key" />}
-              placeholder="Enter your API Key"
+              placeholder="请输入 API Key"
               allowClear
               className="!w-[574px]"
             />
           </FormItem>
         </div>
         <div className="flex flex-col gap-[8px]">
-          <span className="text-[#0B0B0F] font-roboto text-base font-normal leading-[22px]">Embedding model</span>
+          <span className="text-[#0B0B0F] font-roboto text-base font-normal leading-[22px]">向量模型</span>
           <FormItem
             field={`${prefix}-embeddingModelId`}
             className="!mb-0"
@@ -82,7 +82,7 @@ const CustomFormItems: FC<CustomFormItemsProps> = (props) => {
             requiredSymbol={false}>
             <Input
               addBefore={<InputPrefix label="Model name" />}
-              placeholder="Enter your embedding model name"
+              placeholder="请输入向量模型名称"
               allowClear
               className="!w-[574px]"
             />
@@ -90,11 +90,11 @@ const CustomFormItems: FC<CustomFormItemsProps> = (props) => {
           <FormItem
             field={`${prefix}-embeddingBaseUrl`}
             className="!mb-0"
-            rules={[{ required: true, message: 'Cannot be empty' }]}
+            rules={[{ required: true, message: '不能为空' }]}
             requiredSymbol={false}>
             <Input
               addBefore={<InputPrefix label="Base URL" />}
-              placeholder="Enter your base URL"
+              placeholder="请输入 Base URL"
               allowClear
               className="!w-[574px]"
             />
@@ -102,11 +102,11 @@ const CustomFormItems: FC<CustomFormItemsProps> = (props) => {
           <FormItem
             field={`${prefix}-embeddingApiKey`}
             className="!mb-0"
-            rules={[{ required: true, message: 'Cannot be empty' }]}
+            rules={[{ required: true, message: '不能为空' }]}
             requiredSymbol={false}>
             <Input
               addBefore={<InputPrefix label="API Key" />}
-              placeholder="Enter your API Key"
+              placeholder="请输入 API Key"
               allowClear
               className="!w-[574px]"
             />
@@ -130,21 +130,21 @@ const StandardFormItems: FC<StandardFormItemsProps> = (props) => {
   return (
     <>
       <FormItem
-        label="Select AI model"
+        label="选择模型"
         field={`${prefix}-modelId`}
         requiredSymbol={false}
         rules={[
           {
             validator(value, callback) {
               if (!value) {
-                callback('Please select AI model')
+                callback('请选择模型')
               } else {
                 callback()
               }
             }
           }
         ]}>
-        <Select allowCreate placeholder="please select" options={option} className="!w-[574px]" />
+        <Select allowCreate placeholder="请选择" options={option} className="!w-[574px]" />
       </FormItem>
       <FormItem
         requiredSymbol={false}
@@ -152,7 +152,7 @@ const StandardFormItems: FC<StandardFormItemsProps> = (props) => {
         field={`${prefix}-apiKey`}
         extra={
           <div className="flex items-center text-[#6E718C] text-[14px] ">
-            You can get the API Key Here:
+            你可以在这里获取 API Key：
             <Button
               onClick={() => {
                 const url =
@@ -162,7 +162,7 @@ const StandardFormItems: FC<StandardFormItemsProps> = (props) => {
                 window.open(`${url}`)
               }}
               type="text">
-              {modelPlatform === ModelTypeList.Doubao ? 'Get Doubao API Key' : 'Get OpenAI API Key'}
+              {modelPlatform === ModelTypeList.Doubao ? '获取豆包 API Key' : '获取 OpenAI API Key'}
             </Button>
           </div>
         }
@@ -170,14 +170,14 @@ const StandardFormItems: FC<StandardFormItemsProps> = (props) => {
           {
             validator(value, callback) {
               if (!value) {
-                callback('Please enter your API key')
+                callback('请输入 API Key')
               } else {
                 callback()
               }
             }
           }
         ]}>
-        <Input autoFocus placeholder="Enter your API key" allowClear className="!w-[574px]" />
+        <Input autoFocus placeholder="请输入 API Key" allowClear className="!w-[574px]" />
       </FormItem>
     </>
   )
@@ -205,14 +205,14 @@ const Settings: FC<SettingsProps> = (props) => {
   const { run: updateModelSettings, loading: updateLoading } = useRequest(updateModelSettingsAPI, {
     manual: true,
     onSuccess() {
-      Message.success('Your API key saved successfully')
+      Message.success('API Key 保存成功')
       getInfo()
       if (init) {
         closeSetting?.()
       }
     },
     onError(e: Error) {
-      const errMsg = get(e, 'response.data.message') || get(e, 'message') || 'Failed to save settings'
+      const errMsg = get(e, 'response.data.message') || get(e, 'message') || '保存设置失败'
       Message.error(errMsg)
     }
   })
@@ -222,7 +222,7 @@ const Settings: FC<SettingsProps> = (props) => {
       const values = form.getFieldsValue()
       const isCustom = values.modelPlatform === ModelTypeList.Custom
       if (!values.modelPlatform) {
-        Message.error('Please select Model Platform')
+        Message.error('请选择模型平台')
         return
       }
       const commonKey = [
@@ -277,9 +277,9 @@ const Settings: FC<SettingsProps> = (props) => {
       <div className="top-0 left-0 flex flex-col h-full overflow-y-hidden py-2 pr-2 relative">
         <div className="bg-white rounded-[16px] pl-6 flex flex-col h-full overflow-y-auto overflow-x-hidden scrollbar-hide pb-2">
           <div className="mb-[12px]">
-            <div className="mt-[26px] mb-[10px] text-[24px] font-bold text-[#000]">Select a AI model to start</div>
+            <div className="mt-[26px] mb-[10px] text-[24px] font-bold text-[#000]">选择一个模型开始使用</div>
             <Text type="secondary" className="text-[13px]">
-              Configure AI model and API Key, then you can start MineContext’s intelligent context capability
+              配置 AI 模型和 API Key，随后即可启用 MineContext 的智能上下文能力
             </Text>
           </div>
 
@@ -293,7 +293,7 @@ const Settings: FC<SettingsProps> = (props) => {
                 [`${ModelTypeList.Doubao}-modelId`]: 'doubao-seed-1-6-flash-250828',
                 [`${ModelTypeList.OpenAI}-modelId`]: 'gpt-5-nano'
               }}>
-              <FormItem label="Model platform" field={'modelPlatform'} requiredSymbol={false}>
+              <FormItem label="模型平台" field={'modelPlatform'} requiredSymbol={false}>
                 <ModelRadio />
               </FormItem>
               <FormItem
@@ -315,7 +315,7 @@ const Settings: FC<SettingsProps> = (props) => {
             </Form>
             <Spin loading={updateLoading}>
               <Button type="primary" onClick={submit} disabled={updateLoading} className="!bg-[#000]">
-                {init ? 'Get started' : 'Save'}
+                {init ? '开始使用' : '保存'}
               </Button>
             </Spin>
           </div>

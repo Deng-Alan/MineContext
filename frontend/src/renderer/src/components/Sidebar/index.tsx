@@ -20,7 +20,7 @@ const tabItems = [
   {
     key: 'home',
     icon: <img src={homeIcon} alt="home" style={{ width: 15, height: 15 }} />,
-    label: 'Home',
+    label: '主页',
     path: '/'
   },
   // {
@@ -32,13 +32,13 @@ const tabItems = [
   {
     key: 'screen-monitor',
     icon: <img src={screenMonitorIcon} alt="screen-monitor" style={{ width: 15, height: 15 }} />,
-    label: 'Screen Monitor',
+    label: '屏幕监控',
     path: '/screen-monitor'
   },
   {
     key: 'settings',
     icon: <img src={settings} alt="settings" style={{ width: 15, height: 15 }} />,
-    label: 'Settings',
+    label: '设置',
     path: '/settings'
   }
   // {
