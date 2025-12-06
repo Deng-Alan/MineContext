@@ -8,9 +8,11 @@
 
 一个开源、主动的上下文感知 AI 伙伴，致力于让您的工作、学习与创作更加清晰高效。
 
+> 本仓库为基于官方 MineContext 的个人维护分支，主要进行了界面中文本地化和部分功能调整（如使用个人更新源等）。
+
 中文 / [English](README.md)
 
-<a href="https://bytedance.larkoffice.com/wiki/Hn6ewRnAwiSro7kkH6Sc1DMFnng">社区实践</a> · <a href="https://github.com/volcengine/MineContext/issues">反馈问题</a> · <a href="https://bytedance.larkoffice.com/share/base/form/shrcn2wgAfiyCVVwhvVYCXWNNdc">提交问卷</a>
+<a href="https://bytedance.larkoffice.com/wiki/Hn6ewRnAwiSro7kkH6Sc1DMFnng">社区实践</a> · <a href="https://github.com/Deng-Alan/MineContext/issues">反馈问题</a> · <a href="https://bytedance.larkoffice.com/share/base/form/shrcn2wgAfiyCVVwhvVYCXWNNdc">提交问卷</a>
 
 [![][release-shield]][release-link]
 [![][github-stars-shield]][github-stars-link]
@@ -26,7 +28,7 @@
 
 🌍 加入我们的 [Discord 社区](https://discord.gg/tGj7RQ3nUR)
 
-<a href="https://github.com/volcengine/MineContext/releases/download/0.1.5/MineContext-0.1.5.dmg">🖥️ Mac 版下载</a> · <a href="https://github.com/volcengine/MineContext/releases/download/0.1.5/MineContext-0.1.5-setup.exe">💻 Windows 版下载</a>
+<a href="https://github.com/Deng-Alan/MineContext/releases">🖥️ Mac 版下载</a> · <a href="https://github.com/Deng-Alan/MineContext/releases">💻 Windows 版下载</a>
 
 </div>
   
@@ -107,7 +109,7 @@ MineContext 非常注重用户隐私，所有数据都默认保存在本地如�
 
 ## 1. 安装
 
-点击 [Github Latest Release](https://github.com/volcengine/MineContext/releases) 下载最新版本。
+点击 [Github Latest Release](https://github.com/Deng-Alan/MineContext/releases) 下载最新版本。
 
 ![Download APP](src/Download-App.gif)
 
@@ -262,6 +264,15 @@ pnpm dev
 pnpm build:mac
 ```
 
+为 Windows 平台构建应用：
+
+```bash
+./build.bat   # 在 Windows PowerShell 中也可以使用 .\build.bat
+cd frontend
+npm run build:win
+# 安装包（MineContext-<version>-setup.exe）会生成在 frontend/dist 目录下
+```
+
 打包生成的可执行文件会存放在`MineContext/frontend/dist`目录下。
 
 ## 🏗️ 后端架构
@@ -331,7 +342,7 @@ opencontext/
 
 ```bash
 # 克隆仓库
-git clone https://github.com/volcengine/MineContext.git
+git clone https://github.com/Deng-Alan/MineContext.git
 cd MineContext
 
 # 安装 uv（如果尚未安装）
@@ -489,13 +500,13 @@ MineContext 的命名，也体现了团队的巧思。既是“我的上下文�
 
 ## 社区与支持
 
-- [GitHub Issues](https://github.com/volcengine/MineContext/issues)：使用 MineContext 时遇到的错误和问题。
+- [GitHub Issues](https://github.com/Deng-Alan/MineContext/issues)：使用 MineContext 时遇到的错误和问题。
 - [邮件支持](mailto:minecontext@bytedance.com)：关于使用 MineContext 的反馈和问题。
 - <a href="https://bytedance.larkoffice.com/wiki/Hg6VwrxnTiXtWUkgHexcFTqrnpg">微信群</a>：讨论 MineContext 使用并分享最新 AI 技术。
 
 # Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=volcengine/MineContext&type=Timeline)](https://www.star-history.com/#volcengine/MineContext&Timeline)
+[![Star History Chart](https://api.star-history.com/svg?repos=Deng-Alan/MineContext&type=Timeline)](https://www.star-history.com/#Deng-Alan/MineContext&Timeline)
 
 # 📃 许可证
 
@@ -503,17 +514,17 @@ MineContext 的命名，也体现了团队的巧思。既是“我的上下文�
 
 <!-- link -->
 
-[release-shield]: https://img.shields.io/github/v/release/volcengine/MineContext?color=369eff&labelColor=black&logo=github&style=flat-square
-[release-link]: https://github.com/volcengine/MineContext/releases
+[release-shield]: https://img.shields.io/github/v/release/Deng-Alan/MineContext?color=369eff&labelColor=black&logo=github&style=flat-square
+[release-link]: https://github.com/Deng-Alan/MineContext/releases
 [license-shield]: https://img.shields.io/badge/license-apache%202.0-white?labelColor=black&style=flat-square
 [license-shield-link]: https://github.com/volcengine/MineContext/blob/main/LICENSE
-[last-commit-shield]: https://img.shields.io/github/last-commit/volcengine/MineContext?color=c4f042&labelColor=black&style=flat-square
-[last-commit-shield-link]: https://github.com/volcengine/MineContext/commits/main
+[last-commit-shield]: https://img.shields.io/github/last-commit/Deng-Alan/MineContext?color=c4f042&labelColor=black&style=flat-square
+[last-commit-shield-link]: https://github.com/Deng-Alan/MineContext/commits/main
 [wechat-shield]: https://img.shields.io/badge/WeChat-微信-4cb55e?labelColor=black&style=flat-square
 [wechat-shield-link]: https://bytedance.larkoffice.com/wiki/Hg6VwrxnTiXtWUkgHexcFTqrnpg
-[github-stars-shield]: https://img.shields.io/github/stars/volcengine/MineContext?labelColor&style=flat-square&color=ffcb47
-[github-stars-link]: https://github.com/volcengine/MineContext
-[github-issues-shield]: https://img.shields.io/github/issues/volcengine/MineContext?labelColor=black&style=flat-square&color=ff80eb
-[github-issues-shield-link]: https://github.com/volcengine/MineContext/issues
-[github-contributors-shield]: https://img.shields.io/github/contributors/volcengine/MineContext?color=c4f042&labelColor=black&style=flat-square
-[github-contributors-link]: https://github.com/volcengine/MineContext/graphs/contributors
+[github-stars-shield]: https://img.shields.io/github/stars/Deng-Alan/MineContext?labelColor&style=flat-square&color=ffcb47
+[github-stars-link]: https://github.com/Deng-Alan/MineContext
+[github-issues-shield]: https://img.shields.io/github/issues/Deng-Alan/MineContext?labelColor=black&style=flat-square&color=ff80eb
+[github-issues-shield-link]: https://github.com/Deng-Alan/MineContext/issues
+[github-contributors-shield]: https://img.shields.io/github/contributors/Deng-Alan/MineContext?color=c4f042&labelColor=black&style=flat-square
+[github-contributors-link]: https://github.com/Deng-Alan/MineContext/graphs/contributors
