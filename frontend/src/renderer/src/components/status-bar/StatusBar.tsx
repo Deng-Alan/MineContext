@@ -22,7 +22,7 @@ const StatusBar: React.FC<StatusBarProps> = ({ vaultData, onSummaryChange, onTag
 
   const renderRow = (label: string, value: React.ReactNode, className?: string): React.ReactElement => (
     <div className={`flex items-center !mb-[12px] !text-[14px] ${className || ''}`}>
-      <span className="text-[#666] w-[140px]">{label} :</span>
+      <span className="text-[#666] w-[140px]">{label}：</span>
       <div className="text-[#333] w-full">{value}</div>
     </div>
   )
@@ -33,20 +33,20 @@ const StatusBar: React.FC<StatusBarProps> = ({ vaultData, onSummaryChange, onTag
   return (
     <div className="status-bar-container">
       {renderRow(
-        'Created at',
-        vaultData.created_at ? dayjs(vaultData.created_at).format('MMMM D, YYYY HH:mm:ss') : 'N/A'
+        '创建时间',
+        vaultData.created_at ? dayjs(vaultData.created_at).format('YYYY年MM月DD日 HH:mm:ss') : '无'
       )}
-      {renderRow('Capture method', 'Creation')}
-      {renderRow('Process method', 'Smart Summary')}
-      {renderRow('Context type', 'Knowledge Context')}
+      {renderRow('捕获方式', '创作')} 
+      {renderRow('处理方式', '智能总结')}
+      {renderRow('上下文类型', '知识上下文')}
       {renderRow(
-        'Summary',
+        '摘要',
         isEditingSummary ? (
           <Input.TextArea
             defaultValue={vaultData.summary || ''}
             onChange={onSummaryChange}
             onBlur={() => setIsEditingSummary(false)}
-            placeholder="Enter summary"
+            placeholder="请输入摘要"
             autoSize
             autoFocus
             className="w-full"
@@ -57,12 +57,12 @@ const StatusBar: React.FC<StatusBarProps> = ({ vaultData, onSummaryChange, onTag
               setIsEditingSummary(true)
             }}
             className="min-h-[22px] cursor-text w-full">
-            {vaultData.summary || <span className="text-[#aaa]">No summary</span>}
+            {vaultData.summary || <span className="text-[#aaa]">暂无摘要</span>}
           </div>
         )
       )}
       {renderRow(
-        'Tags',
+        '标签',
         <div className="flex flex-wrap items-center min-h-[32px] gap-x-[4px] gap-y-[4px]">
           {tags.length > 0 ? (
             tags.map((tag, index) => (
@@ -71,7 +71,7 @@ const StatusBar: React.FC<StatusBarProps> = ({ vaultData, onSummaryChange, onTag
               </Tag>
             ))
           ) : (
-            <div className="text-[#aaa] mr-[8px]">No tags</div>
+            <div className="text-[#aaa] mr-[8px]">暂无标签</div>
           )}
           {isEditingTags ? (
             <Input
@@ -90,7 +90,7 @@ const StatusBar: React.FC<StatusBarProps> = ({ vaultData, onSummaryChange, onTag
                 }
               }}
               onBlur={() => setIsEditingTags(false)}
-              placeholder="Enter new tag"
+              placeholder="输入新标签后按回车"
               autoFocus
               className="!w-[120px] mr-[8px] mb-[4px] !inline-block"
             />
@@ -101,7 +101,7 @@ const StatusBar: React.FC<StatusBarProps> = ({ vaultData, onSummaryChange, onTag
                 e.stopPropagation()
                 setIsEditingTags(true)
               }}>
-              + New tag
+              + 新标签
             </Tag>
           )}
         </div>,

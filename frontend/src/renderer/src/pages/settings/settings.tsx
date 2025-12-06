@@ -78,7 +78,7 @@ const CustomFormItems: FC<CustomFormItemsProps> = (props) => {
           <FormItem
             field={`${prefix}-embeddingModelId`}
             className="!mb-0"
-            rules={[{ required: true, message: 'Cannot be empty' }]}
+            rules={[{ required: true, message: '不能为空' }]}
             requiredSymbol={false}>
             <Input
               addBefore={<InputPrefix label="Model name" />}

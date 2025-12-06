@@ -53,15 +53,15 @@ function getTodoIcon(urgency: TaskUrgency) {
 function genTodoTitle(urgency: TaskUrgency) {
   switch (urgency) {
     case TaskUrgency.High:
-      return 'Urgent'
+      return '紧急'
     case TaskUrgency.Medium:
-      return 'Medium Priority'
+      return '中等优先级'
     case TaskUrgency.Low:
-      return 'Low Priority'
+      return '低优先级'
     case TaskUrgency.Done:
-      return 'Done'
+      return '已完成'
     default:
-      return 'Unknown Priority'
+      return '未知优先级'
   }
 }
 export interface ToDoCardProps {
@@ -97,9 +97,9 @@ const ToDoCard: FC<ToDoCardProps> = (props) => {
       await deleteTask(taskId)
       // TODO: Separate deletion from initial data
       deleteTodoList(taskId)
-      Message.success('task delete success')
+      Message.success('任务删除成功')
     } catch (error) {
-      Message.error('task delete failed')
+      Message.error('任务删除失败')
     } finally {
       setIsDeleting(false)
       setIsTaskHover(null)
@@ -118,7 +118,7 @@ const ToDoCard: FC<ToDoCardProps> = (props) => {
         setCopiedTaskId(null)
       }, 2000)
     } catch (error) {
-      Message.error('Failed to copy content')
+      Message.error('复制内容失败')
     }
   })
 
@@ -143,7 +143,7 @@ const ToDoCard: FC<ToDoCardProps> = (props) => {
         </div>
       </div>
       <div className={`flex items-center ml-2 gap-3 ${isTaskHover === task.id ? 'opacity-100' : 'opacity-0'}`}>
-        <Tooltip content="Copied!" position="top" popupVisible={copiedTaskId === task.id}>
+        <Tooltip content="已复制" position="top" popupVisible={copiedTaskId === task.id}>
           <Button
             type="text"
             size="small"
@@ -154,8 +154,8 @@ const ToDoCard: FC<ToDoCardProps> = (props) => {
           />
         </Tooltip>
         <Popconfirm
-          title="Confirm delete"
-          content="Confirm to delete this todo?"
+          title="确认删除"
+          content="确定要删除该待办吗？"
           onOk={() => handleDeleteTask(task.id)}
           onCancel={() => {
             setIsDeleting(false)
@@ -167,8 +167,8 @@ const ToDoCard: FC<ToDoCardProps> = (props) => {
               setIsTaskHover(null)
             }
           }}
-          okText="Confirm"
-          cancelText="Cancel">
+          okText="确认"
+          cancelText="取消">
           <Button
             type="text"
             size="small"
@@ -296,7 +296,7 @@ const ToDoCard: FC<ToDoCardProps> = (props) => {
         content: values.content,
         urgency: values.urgency
       })
-      Message.success('Task add success')
+      Message.success('任务新增成功')
     } catch (error: any) {
       Message.error(error.message || '')
     }
@@ -318,7 +318,7 @@ const ToDoCard: FC<ToDoCardProps> = (props) => {
           urgency: values.urgency
         })
       }
-      Message.success('task update success')
+      Message.success('任务更新成功')
     } catch (error: any) {
       Message.error(error.message || '')
     }
@@ -358,11 +358,11 @@ const ToDoCard: FC<ToDoCardProps> = (props) => {
             <Space style={{ marginTop: 5 }}>
               <div className="flex px-[2px] justify-center items-center gap-[4px] rounded-[2px] bg-gradient-to-l from-[rgba(239,251,248,0.5)] to-[#F5FBEF]">
                 <div className="mr-[0.3em] font-['Roboto'] text-[15px] font-extralight leading-[22px] tracking-[0.045px] bg-gradient-to-l from-[#007740] to-[#D0B400] bg-clip-text text-transparent">
-                  Todo
+                  待办
                 </div>
               </div>
               <div className="text-black font-['Roboto'] text-sm font-medium leading-[22px] tracking-[0.042px]">
-                today
+                今日
               </div>
             </Space>
             <img src={addIcon} alt="" onClick={handleCreateToDoList} className="cursor-pointer" />
@@ -382,19 +382,19 @@ const ToDoCard: FC<ToDoCardProps> = (props) => {
           ) : (
             <div className="flex flex-col items-center justify-center pt-[60px] pb-[60px] text-center">
               <img src={taskEmpty} alt="empty" className="w-20 h-20 mb-4" />
-              <Text type="secondary">Update at 8 am everyday</Text>
+              <Text type="secondary">每天早上 8 点自动更新</Text>
             </div>
           )}
         </div>
       </Card>
       {/* Edit task modal */}
       <Modal
-        title={status === TODO_LIST_STATUS.Create ? 'Add todo' : 'Edit todo'}
+        title={status === TODO_LIST_STATUS.Create ? '新增待办' : '编辑待办'}
         visible={visible}
         onOk={handleSave}
         onCancel={() => setVisible(false)}
-        okText={status === TODO_LIST_STATUS.Create ? 'Add' : 'Update'}
-        cancelText="Cancel"
+        okText={status === TODO_LIST_STATUS.Create ? '新增' : '更新'}
+        cancelText="取消"
         unmountOnExit>
         <Form
           layout="vertical"
@@ -405,16 +405,16 @@ const ToDoCard: FC<ToDoCardProps> = (props) => {
             <Input className="hidden" />
           </Form.Item>
           <Form.Item
-            label="Todo content"
+            label="待办内容"
             field="content"
-            rules={[{ required: true, message: 'Please input task content' }]}>
-            <TextArea autoSize placeholder="Input todo content" />
+            rules={[{ required: true, message: '请输入待办内容' }]}>
+            <TextArea autoSize placeholder="请输入待办内容" />
           </Form.Item>
-          <Form.Item label="Priority" field="urgency">
+          <Form.Item label="优先级" field="urgency">
             <Select>
-              <Select.Option value={TaskUrgency.High}>Urgent</Select.Option>
-              <Select.Option value={TaskUrgency.Medium}>Medium Priority</Select.Option>
-              <Select.Option value={TaskUrgency.Low}>Low Priority</Select.Option>
+              <Select.Option value={TaskUrgency.High}>紧急</Select.Option>
+              <Select.Option value={TaskUrgency.Medium}>中等优先级</Select.Option>
+              <Select.Option value={TaskUrgency.Low}>低优先级</Select.Option>
             </Select>
           </Form.Item>
         </Form>

@@ -46,7 +46,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
 }) => {
   return (
     <Modal
-      title="Settings"
+      title="设置"
       visible={visible}
       autoFocus={false}
       focusLock
@@ -56,10 +56,10 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
       footer={
         <>
           <Button onClick={onCancel} className="[&_.arco-btn]: !text-xs">
-            Cancel
+            取消
           </Button>
           <Button type="primary" onClick={onSave} className="[&_.arco-btn-primary]: !bg-black">
-            Save
+            保存
           </Button>
         </>
       }
@@ -67,21 +67,21 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
       <Form layout="vertical" form={form}>
         <div className="flex w-full flex-1 mt-5">
           <div className="flex flex-col flex-1 pr-[24px]">
-            <Form.Item label="Record Interval" className="[&_.arco-form-item-label]:!text-xs">
+            <Form.Item label="截图间隔" className="[&_.arco-form-item-label]:!text-xs">
               <Slider
                 value={tempRecordInterval}
                 onChange={(value) => onSetTempRecordInterval(value as number)}
                 min={5}
                 max={300}
                 marks={{
-                  5: '5s',
-                  300: '5min'
+                  5: '5 秒',
+                  300: '5 分钟'
                 }}
                 className="!mt-4"
                 formatTooltip={(value) => `${value}s`}
               />
             </Form.Item>
-            <Form.Item label="Choose what to record" shouldUpdate>
+            <Form.Item label="选择录制内容" shouldUpdate>
               {(values) => {
                 const { screenSources = [], windowSources = [] } = values || {}
                 const screenList = screenAllSources?.filter((source) => screenSources.includes(source.id)) || []
@@ -98,7 +98,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
                 )
               }}
             </Form.Item>
-            <Form.Item label="Enable recording hours" className="[&_.arco-form-item-label]:!text-xs !mb-0">
+            <Form.Item label="开启录制时间段" className="[&_.arco-form-item-label]:!text-xs !mb-0">
               <Switch
                 checked={tempEnableRecordingHours}
                 onChange={onSetTempEnableRecordingHours}
@@ -109,20 +109,20 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
             </Form.Item>
             {tempEnableRecordingHours && (
               <div className="!mt-3">
-                <Form.Item label="Set recording hours" className="[&_.arco-form-item-label]:!text-xs">
+                <Form.Item label="录制时间段" className="[&_.arco-form-item-label]:!text-xs">
                   <TimePicker.RangePicker
                     format="HH:mm"
                     value={tempRecordingHours}
                     onChange={(value) => onSetTempRecordingHours(value as [string, string])}
                   />
                 </Form.Item>
-                <Form.Item label="Apply to days" className="[&_.arco-form-item-label]: !text-xs">
+                <Form.Item label="应用到哪些天" className="[&_.arco-form-item-label]: !text-xs">
                   <Radio.Group value={tempApplyToDays} onChange={onSetTempApplyToDays}>
                     <Radio value="weekday" className="[&_.arco-radio-mask]: !border-[#d7daea]">
-                      Only weekday
+                      仅工作日
                     </Radio>
                     <Radio value="everyday" className="[&_.arco-radio-mask]: !border-[#d7daea]">
-                      Everyday
+                      每天
                     </Radio>
                   </Radio.Group>
                 </Form.Item>
@@ -134,9 +134,9 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
               'flex flex-col flex-1 border-l border-[#efeff4] max-h-[360px] h-[360px] overflow-x-hidden overflow-y-auto px-[16px]  [&_.arco-checkbox-checked_.arco-checkbox-mask]:!bg-[#000000] [&_.arco-checkbox-checked_.arco-checkbox-mask]:!border-[#000000]',
               { hidden: !applicationVisible }
             )}>
-            <div className="text-[15px] leading-[18px] text-[#42464e] mb-[12px] font-medium">Choose what to record</div>
+            <div className="text-[15px] leading-[18px] text-[#42464e] mb-[12px] font-medium">选择录制内容</div>
             <div className="[&_.arco-checkbox]:!flex [&_.arco-checkbox]:!items-center">
-              <div className="text-[14px] leading-[20px] text-[#42464e] mb-[4px]">Screen</div>
+              <div className="text-[14px] leading-[20px] text-[#42464e] mb-[4px]">屏幕</div>
               <Form.Item field="screenSources">
                 <Checkbox.Group className="!grid grid-cols-3 gap-4 relative [&_label]:!mr-0 [&_.arco-checkbox-text]:!ml-0">
                   {screenAllSources.map((source) => (
@@ -179,9 +179,9 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
               </Form.Item>
             </div>
             <div className="[&_.arco-checkbox]:!flex [&_.arco-checkbox]:!items-center">
-              <div className="text-[14px] leading-[20px] text-[#42464e] mb-[4px]">Window</div>
+              <div className="text-[14px] leading-[20px] text-[#42464e] mb-[4px]">窗口</div>
               <div className="text-[10px] leading-[12px] text-[#737a87] mb-[4px]">
-                Only opened applications can be selected
+                仅可选择当前已打开的应用窗口
               </div>
               <Form.Item field="windowSources">
                 <Checkbox.Group className="flex flex-col space-y-4">

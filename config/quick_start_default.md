@@ -1,59 +1,66 @@
-Welcome to MineContext!
+欢迎使用 MineContext！
 
-MineContext is your Context-Aware AI Partner
-Not a workbench, not a second brain, nor a knowledge base—but a truly proactive partner!
+MineContext 是你的「上下文感知 AI 伙伴」，
+既不是传统的工作台，也不是第二大脑或知识库，而是一个真正主动的助手。
 
-Based on Context-Engineering, we are dedicated to helping you work, study, and create better by collecting, processing, and utilizing your context.
+基于 Context-Engineering 方法论，我们希望通过采集、整理和利用你的日常上下文，
+帮助你更高效地工作、学习和创作。
 
-## Screen Monitor
+## 屏幕监控（Screen Monitor）
 
-Screen Monitor captures anything on your screen and transforms it into intelligent, connected Contexts. All data stays local with full privacy protection！
+屏幕监控会捕捉你屏幕上的一切内容，并将其转化为智能、互相关联的上下文。
+所有数据**仅保存在本地**，充分保障你的隐私。
 
-After enabling Recording, MineContext will periodically capture screenshots for analysis (the interval time can be adjusted in Settings), summarizing your activity every 15 minutes.
+在开启录制后，MineContext 会按照你在「设置」中配置的间隔定期截取屏幕，
+大约每 15 分钟生成一次活动总结。
 
-You can view previous activities by switching the date.
+你可以通过切换日期，回顾任意一天的历史活动记录。
 
-## Home
+## 主页（Home）
 
-Home is where MineContext proactively delivers your daily summaries, todos, tips and other insights—emerging from all your collected Contexts.
+主页是 MineContext 主动为你推送各种洞察的地方，
+包括每日/每周总结、待办事项、提示信息以及来自所有上下文的关键信息。
 
-### Todo
+### 待办（Todo）
 
-MineContext will automatically generate todos based on your context. You can delete or edit them.
+MineContext 会根据你的上下文自动生成待办事项，你也可以自由编辑或删除它们。
 
-### Tip
+### 小提示（Tip）
 
-MineContext generates tips to help you uncover insights behind the context.
+MineContext 会生成提示，帮助你发现上下文背后更深层的洞察。
 
-### Summary
+### 总结（Summary）
 
-MineContext generates a daily/weekly summary every day at 8 PM and every Sunday at 8 PM, allowing you to review your activities more clearly.
+MineContext 会在每天晚上 8 点，以及每周日晚上 8 点，自动生成「每日/每周总结」，
+方便你更清晰地回顾这段时间内的活动。
 
-## Creation
+## 创作（Creation）
 
-You can create with AI enhancement based on your own Context. More importantly, your creations become key parts of the context, with each output serving as future material.
+你可以在自己的上下文基础上，借助 AI 完成创作。
+更重要的是，你的每一次输出也会反过来成为新的上下文素材，
+为未来的工作和灵感积累养分。
 
-- Click anywhere to start typing
-- Click to edit this line
-- Click + in left navigation for new Folder or Document
-- /      for more advanced blocks
+- 在页面任意位置点击即可开始输入
+- 点击现有文字即可进入编辑
+- 点击左侧导航中的「+」可以新建文件夹或文档
+- 输入 `/` 呼出更多高级块（如列表、代码块等）
 
-### Image
+### 图片（Image）
 
-Support for images and visual content
+支持插入图片等可视化内容。
 
-### Table
+### 表格（Table）
 
 |  |  |  |
 | - | - | - |
 
-Math
+数学公式示例：
 
 ```Plain
 x = \pm \sqrt{2}
 ```
 
-Code
+代码示例：
 
 ```Plain
 print("hello MineContext")

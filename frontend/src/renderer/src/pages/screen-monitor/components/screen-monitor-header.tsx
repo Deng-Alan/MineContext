@@ -32,17 +32,16 @@ const ScreenMonitorHeader: React.FC<ScreenMonitorHeaderProps> = ({
         <Title
           heading={3}
           className="[&_.arco-typography]: !mt-1 [&_.arco-typography]: !font-bold [&_.arco-typography]: !text-[24px] [&_.arco-typography]: !text-black">
-          Screen Monitor
+          屏幕监控
         </Title>
         <Text type="secondary" className="[&_.arco-typography]: !text-[13px]">
-          Screen Monitor captures anything on your screen and transforms it into intelligent, connected Contexts. All
-          data stays local with full privacy protection ✨
+          屏幕监控会定期截取你的屏幕内容，并将其转化为智能、互相关联的上下文。所有数据都仅保存在本地，完整保护你的隐私 ✨
         </Text>
       </div>
       <div className="flex items-center ml-0 md:ml-6 mt-4 md:mt-0 justify-end">
         {hasPermission ? (
           <Space>
-            <Popover content="Settings can only be adjusted after Stop Recording." disabled={!isMonitoring}>
+            <Popover content="仅在停止录制后才能调整设置" disabled={!isMonitoring}>
               <Button
                 type="outline"
                 icon={<IconSettings />}
@@ -50,12 +49,12 @@ const ScreenMonitorHeader: React.FC<ScreenMonitorHeaderProps> = ({
                 disabled={isMonitoring}
                 onClick={onOpenSettings}
                 className="[&_.arco-btn]: !bg-white [&_.arco-btn]: !border-gray-300 [&_.arco-btn]: !text-black [&_.arco-btn:hover]: !bg-gray-50">
-                Settings
+                设置
               </Button>
             </Popover>
             {!isMonitoring ? (
               <Popover
-                content="Please click the settings button and select your monitoring window or screen."
+                content="请先点击“设置”，选择需要监控的窗口或屏幕"
                 disabled={!(screenAllSources.length === 0 && appAllSources.length === 0)}>
                 <Button
                   type="primary"
@@ -66,7 +65,7 @@ const ScreenMonitorHeader: React.FC<ScreenMonitorHeaderProps> = ({
                   style={{
                     background: '#000'
                   }}>
-                  Start Recording
+                  开始录制
                 </Button>
               </Popover>
             ) : (
@@ -77,7 +76,7 @@ const ScreenMonitorHeader: React.FC<ScreenMonitorHeaderProps> = ({
                 size="large"
                 onClick={onStopMonitoring}
                 className="[&_.arco-btn-primary]: !bg-red-500 [&_.arco-btn-primary:hover]: !bg-red-600">
-                Stop Recording
+                停止录制
               </Button>
             )}
           </Space>
