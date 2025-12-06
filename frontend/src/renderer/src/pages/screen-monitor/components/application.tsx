@@ -50,11 +50,11 @@ const Application: FC<ApplicationProps> = (props) => {
       ) : null}
       {!visible ? (
         <Button type="text" className="!px-0 ml-[24px]" onClick={onOk}>
-          Select
+          选择
         </Button>
       ) : (
         <Button type="text" className="!px-0 ml-[24px]" onClick={onCancel}>
-          Close
+          关闭
         </Button>
       )}
     </div>

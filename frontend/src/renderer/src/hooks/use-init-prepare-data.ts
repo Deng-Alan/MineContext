@@ -10,7 +10,7 @@ const TODOList = [
   {
     id: -3, // Auto-incrementing ID (simulated value)
     content:
-      'Click 【Start with Tutorial】 in the 【Creation】 to jump into the tutorial and master the features and usage of MineContext.',
+      '点击【创作】侧边栏中的【快速上手教程】文档，快速了解 MineContext 的功能与使用方式。',
     created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
     urgency: TaskUrgency.High, // 1=Urgent
     start_time: dayjs().format('YYYY-MM-DD HH:mm:ss'),
@@ -20,7 +20,7 @@ const TODOList = [
   {
     id: -2,
     content:
-      'Enter the 【Settings】 in 【Screen Monitor】 to set your screen sharing area, and click 【Start Recording】 to begin.',
+      '进入【屏幕监控】页面的【设置】，配置你的屏幕录制区域，然后点击【开始录制】。',
     created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
     urgency: TaskUrgency.High, // 0=Normal
     start_time: dayjs().format('YYYY-MM-DD HH:mm:ss'),
@@ -29,7 +29,7 @@ const TODOList = [
   },
   {
     id: -4,
-    content: 'Click 【Chat with AI】 in the upper right corner of the screen to experience the AI partner Q&A.',
+    content: '点击右上角的【与 AI 对话】，体验 AI 伙伴问答与创作能力。',
     created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'), // Due before the end of work today
     urgency: TaskUrgency.High, // 2=Very Urgent
     start_time: dayjs().format('YYYY-MM-DD HH:mm:ss'),

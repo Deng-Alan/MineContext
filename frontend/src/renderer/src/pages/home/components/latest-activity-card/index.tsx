@@ -91,8 +91,8 @@ const LatestActivityCard: FC<LatestActivityCardProps> = () => {
   return (
     <CardLayout
       seeAllClick={handleNavigateToScreenMonitor}
-      title="Latest activity"
-      emptyText="No activity in the last 7 days. "
+      title="最近活动"
+      emptyText="最近 7 天内没有活动记录。"
       isEmpty={isEmpty(latestActivity)}>
       {latestActivity ? (
         <ActivityTimelineItem

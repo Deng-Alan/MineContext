@@ -34,7 +34,7 @@ export interface ModelInfo {
 export const ModelInfoList = [
   {
     icon: <img src={doubao} className="!max-w-none w-[24px] h-[24px]" />,
-    key: 'Doubao',
+    key: '豆包',
     value: 'doubao',
     option: [
       {
@@ -72,7 +72,7 @@ export const ModelInfoList = [
   },
   {
     icon: <img src={custom} className="!max-w-none w-[18px] h-[18px]" />,
-    key: 'Custom',
+    key: '自定义',
     value: 'custom'
   }
 ]

@@ -52,8 +52,11 @@ class ReportGenerator:
             from opencontext.storage.global_storage import get_storage
 
             now = datetime.datetime.now()
+            date_str = now.strftime("%Y-%m-%d")
+            # 使用中文标题保存日报，示例："日报 - 2025-12-06"
+            report_title = f"日报 - {date_str}"
             report_id = get_storage().insert_vaults(
-                title=f"Daily Report - {now.strftime('%Y-%m-%d')}",
+                title=report_title,
                 summary="",
                 content=result,
                 document_type=VaultType.DAILY_REPORT.value,
@@ -63,7 +66,7 @@ class ReportGenerator:
                 data={
                     "doc_id": str(report_id),
                     "doc_type": "vaults",
-                    "title": f"Daily Report - {now.strftime('%Y-%m-%d')}",
+                    "title": report_title,
                     "content": result,
                 },
             )
@@ -211,7 +214,8 @@ class ReportGenerator:
         hourly_summaries = await self._process_chunks_concurrently(start_time, end_time)
 
         if not hourly_summaries:
-            return "No activity data available for the specified time range."
+            # 当前时间范围内没有任何上下文/活动数据时的提示文案
+            return "当前时间范围内没有可用的活动数据。"
 
         # Format hourly summaries for the prompt
         summaries_text = []

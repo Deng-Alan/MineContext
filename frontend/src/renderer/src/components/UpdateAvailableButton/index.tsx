@@ -54,7 +54,7 @@ export default function UpdateAvailableButton() {
       <img src={rocketSvg} className="w-3 h-3" />
       {/* 文本内容 */}
       <span className="text-[#3F3F51] text-[12px] ml-1">
-        {!isHovered ? 'Update available' : 'Restart to update'}
+        {!isHovered ? '有新版本可用' : '点击重启更新'}
       </span>
 
       {/* 版本号 */}

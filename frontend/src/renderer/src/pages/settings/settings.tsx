@@ -42,7 +42,7 @@ const CustomFormItems: FC<CustomFormItemsProps> = (props) => {
             rules={[{ required: true, message: '不能为空' }]}
             requiredSymbol={false}>
             <Input
-              addBefore={<InputPrefix label="Model name" />}
+              addBefore={<InputPrefix label="模型名称" />}
               placeholder="需要具备视觉理解能力的多模态模型。"
               allowClear
               className="[&_.arco-input-inner-wrapper]: !w-[574px]"
@@ -55,7 +55,7 @@ const CustomFormItems: FC<CustomFormItemsProps> = (props) => {
             requiredSymbol={false}>
             <Input
               addBefore={<InputPrefix label="Base URL" />}
-              placeholder="请输入 Base URL"
+              placeholder="请输入 Base URL（接口地址）"
               allowClear
               className="[&_.arco-input-inner-wrapper]: !w-[574px]"
             />
@@ -81,7 +81,7 @@ const CustomFormItems: FC<CustomFormItemsProps> = (props) => {
             rules={[{ required: true, message: '不能为空' }]}
             requiredSymbol={false}>
             <Input
-              addBefore={<InputPrefix label="Model name" />}
+              addBefore={<InputPrefix label="模型名称" />}
               placeholder="请输入向量模型名称"
               allowClear
               className="!w-[574px]"

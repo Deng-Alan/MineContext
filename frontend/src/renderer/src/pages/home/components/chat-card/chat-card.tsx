@@ -43,7 +43,7 @@ const ChatCard = () => {
     }
   })
   return (
-    <CardLayout title="Recent chat" emptyText="No chats in the latest 7 days. " isEmpty={isEmpty(conversationList)}>
+    <CardLayout title="最近对话" emptyText="最近 7 天内没有新的对话。" isEmpty={isEmpty(conversationList)}>
       {(conversationList || [])?.map((conversation) => (
         <div className="flex items-center cursor-pointer justify-between group w-full hover:bg-[#F7F8FD] rounded-[6px] py-[5px] px-[4px]">
           <div
@@ -52,7 +52,7 @@ const ChatCard = () => {
             onClick={() => handleNavigation(conversation)}>
             <img src={chatHistoryIcon} className="block" />
             <Typography.Text className="!my-0 !flex-1 !text-[13px] !leading-[22px] !font-normal" ellipsis={{ rows: 1 }}>
-              {conversation.title || 'Untitled Conversation'}
+              {conversation.title || '未命名对话'}
             </Typography.Text>
             {conversation.updated_at && (
               <span className="flex text-[#AEAFC2]  items-center text-[11px] font-normal leading-[22px] opacity-0 group-hover:opacity-100">
@@ -61,9 +61,9 @@ const ChatCard = () => {
             )}
           </div>
           <div className="flex items-center">
-            {/* View button - hidden by default, shown on hover */}
+            {/* 查看按钮 - 默认隐藏，悬停时显示 */}
             <button className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-[#7075FF] font-pingfang-sc text-[12px] font-medium leading-[20px] tracking-[0.036px] cursor-pointer">
-              View
+              查看
             </button>
           </div>
         </div>

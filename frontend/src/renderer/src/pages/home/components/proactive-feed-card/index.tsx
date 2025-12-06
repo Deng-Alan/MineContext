@@ -50,19 +50,19 @@ const ProactiveFeedCardItem: FC<FeedCardProps> = (props) => {
   const [eventIcon, eventTitle] = useMemo(() => {
     switch (feedType) {
       case PushDataTypes.TIP_GENERATED:
-        return ['💡', 'Tip']
+        return ['💡', '提示']
       case PushDataTypes.DAILY_SUMMARY_GENERATED:
-        return ['👋', 'Daily Summary']
+        return ['👋', '每日总结']
       case PushDataTypes.WEEKLY_SUMMARY_GENERATED:
-        return ['🌟', 'Weekly Summary']
+        return ['🌟', '每周总结']
       default:
-        return ['🔔', 'New Notification']
+        return ['🔔', '新通知']
     }
   }, [feedType])
 
   const handleRemoveEvent = (id: string) => {
     removeEvent(id)
-    Message.success('insight deleted')
+    Message.success('洞察已删除')
   }
 
   return (
@@ -102,7 +102,7 @@ const ProactiveFeedCardItem: FC<FeedCardProps> = (props) => {
                 <img src={chatIcon} alt="chat icon" />
               </div>
               <div className="text-[var(--text-color-text-3,#5252FF)] font-['Roboto'] text-xs font-normal leading-5">
-                {feedType === PushDataTypes.DAILY_SUMMARY_GENERATED ? 'View' : 'Check'}
+                {feedType === PushDataTypes.DAILY_SUMMARY_GENERATED ? '查看' : '查看详情'}
               </div>
             </div>
           </div>
@@ -139,7 +139,7 @@ const ProactiveFeedCard: React.FC = ({}) => {
         <div className="flex px-[2px] justify-center items-center gap-[4px] rounded-[2px] bg-gradient-to-l from-[rgba(239,251,248,0.5)] to-[#F5FBEF]">
           💡
           <div className="font-['Roboto'] text-[15px] font-extralight leading-[22px] tracking-[0.045px] bg-gradient-to-l from-[#00C469] to-[#0026B1] bg-clip-text text-transparent">
-            Proactive
+            主动
           </div>
         </div>
         <div
@@ -147,7 +147,7 @@ const ProactiveFeedCard: React.FC = ({}) => {
           style={{
             fontWeight: 500
           }}>
-          Feed
+          信息流
         </div>
       </div>
       <div
@@ -158,7 +158,7 @@ const ProactiveFeedCard: React.FC = ({}) => {
           <div className="flex flex-col items-center justify-center mt-14 gap-[8px]">
             <img src={feedEmptyIcon} alt="empty icon" />
             <div className="w-[182px] text-center text-[#6E718C] font-roboto text-[12px] font-normal leading-[20px] tracking-[0.036px]">
-              Proactive insights will appear here to help you
+              MineContext 会在这里主动推送与你相关的洞察内容
             </div>
           </div>
         )}

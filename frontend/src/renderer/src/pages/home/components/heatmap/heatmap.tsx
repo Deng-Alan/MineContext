@@ -3,6 +3,7 @@ import { IconDown, IconLeft, IconRight } from '@arco-design/web-react/icon'
 import { Heatmap, DayCellProps } from '@zhongyao/heatmap'
 import { useMemoizedFn, useRequest } from 'ahooks'
 import dayjs from 'dayjs'
+import 'dayjs/locale/zh-cn'
 import { capitalize, get, set } from 'lodash'
 import { FC, useEffect, useMemo, useState } from 'react'
 import advancedFormat from 'dayjs/plugin/advancedFormat'
@@ -13,6 +14,7 @@ import isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
 dayjs.extend(isSameOrAfter)
 dayjs.extend(isSameOrBefore)
 dayjs.extend(advancedFormat)
+dayjs.locale('zh-cn')
 const getColor = (count: number) => {
   if (count === 0) return 'bg-[#F0F2F5] border-[0.4px] border-[#E1E3EF]'
   if (count <= 5 && count > 0) return 'bg-[#E1F9E9] border-[0.4px] border-[#BAEFD1]'
@@ -22,19 +24,19 @@ const getColor = (count: number) => {
 }
 export const HeatmapDataOptions = [
   {
-    label: 'Todos',
+    label: '待办',
     value: 'todos'
   },
   {
-    label: 'Creation',
+    label: '创作',
     value: 'vaults'
   },
   {
-    label: 'Context',
+    label: '上下文',
     value: 'context'
   },
   {
-    label: 'Chat',
+    label: '对话',
     value: 'conversations'
   }
 ]
@@ -139,7 +141,7 @@ const HeatmapEntry: FC<HeatmapEntryProps> = (props) => {
     if (dayjs(days).isSameOrAfter(dayjs('2025-01-01'))) {
       setSelectedDays(days)
     } else {
-      Message.info('Cannot select past date')
+      Message.info('不能再选择更早的日期了')
     }
   })
 
@@ -148,7 +150,7 @@ const HeatmapEntry: FC<HeatmapEntryProps> = (props) => {
     if (dayjs(days).isSameOrBefore(dayjs())) {
       setSelectedDays(days)
     } else {
-      Message.info('Cannot select future date')
+      Message.info('不能选择未来日期')
     }
   })
   const [visible, setVisible] = useState(false)
@@ -194,7 +196,7 @@ const HeatmapEntry: FC<HeatmapEntryProps> = (props) => {
             <div
               onClick={handleChangeYear}
               className="rounded-[4px] flex items-center justify-center text-[12px] leading-[20px] font-medium text-[#3F3F51] bg-[#FFFFFF] border border-[#E1E3EF] px-[12px] py-[2px]">
-              Back
+              返回
             </div>
             <div className="flex items-center gap-[6px]">
               <div
@@ -203,7 +205,7 @@ const HeatmapEntry: FC<HeatmapEntryProps> = (props) => {
                 <IconLeft />
               </div>
               <div className="text-[16px] leading-[24px] font-medium text-[#0b0b0f]">
-                {dayjs(selectedDays).format('MMMM D, YYYY')}
+                {dayjs(selectedDays).format('YYYY-MM-DD')}
               </div>
               <div
                 className="w-[24px] h-[24px] flex items-center justify-center rounded-[4px] bg-[#F6F7FA] text-[#0b0b0f]"
@@ -214,13 +216,13 @@ const HeatmapEntry: FC<HeatmapEntryProps> = (props) => {
           </div>
         )}
         <div className="flex items-center gap-[6px]">
-          <span className="text-[10px] leading-[24px] text-[#6E718C]">Less</span>
+          <span className="text-[10px] leading-[24px] text-[#6E718C]">较少</span>
           <div className="flex items-center gap-[2px]">
             {[0, 5, 10, 15, 20].map((count) => (
               <div key={count} className={`w-[6px] h-[6px] rounded-[1px] ${getColor(count)}`} />
             ))}
           </div>
-          <span className="text-[10px] leading-[24px] text-[#6E718C]">More</span>
+          <span className="text-[10px] leading-[24px] text-[#6E718C]">较多</span>
         </div>
       </div>
       <Divider className="!my-[10px]" />

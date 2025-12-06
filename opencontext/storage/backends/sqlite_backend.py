@@ -346,10 +346,45 @@ class SQLiteBackend(IDocumentStorageBackend):
         """Insert default Quick Start document"""
         cursor = self.connection.cursor()
 
-        # Check if Quick Start document already exists
+        # Check if Quick Start document already exists (English or Chinese title)
         cursor.execute(
-            "SELECT COUNT(*) FROM vaults WHERE title = 'Start With Tutorial'")
-        if cursor.fetchone()[0] > 0:
+            "SELECT id, title, content FROM vaults WHERE title IN ('Start With Tutorial', '快速上手教程')"
+        )
+        existing = cursor.fetchone()
+        if existing:
+            # If existing document uses old English title, update it to Chinese and refresh tags/content
+            try:
+                config_dir = "./config"
+                quick_start_file = os.path.join(
+                    config_dir, "quick_start_default.md")
+
+                if os.path.exists(quick_start_file):
+                    with open(quick_start_file, "r", encoding="utf-8") as f:
+                        default_content = f.read()
+                else:
+                    default_content = existing and existing["content"] or "欢迎使用 MineContext！"
+
+                if existing[1] == "Start With Tutorial":
+                    cursor.execute(
+                        """
+                        UPDATE vaults
+                        SET title = ?,
+                            content = ?,
+                            tags = ?,
+                            updated_at = CURRENT_TIMESTAMP
+                        WHERE id = ?
+                        """,
+                        (
+                            "快速上手教程",
+                            default_content,
+                            "教程,欢迎,快速开始",
+                            existing[0],
+                        ),
+                    )
+                    self.connection.commit()
+            except Exception:
+                # If migration fails, keep existing record
+                self.connection.rollback()
             return
 
         try:
@@ -377,11 +412,11 @@ class SQLiteBackend(IDocumentStorageBackend):
                 VALUES (?, ?, ?, ?, ?, ?, ?)
             """,
                 (
-                    "Start With Tutorial",
+                    "快速上手教程",
                     "",
                     default_content,
                     "vaults",
-                    "guide,welcome,quick-start",
+                    "教程,欢迎,快速开始",
                     False,
                     False,
                 ),
@@ -393,7 +428,7 @@ class SQLiteBackend(IDocumentStorageBackend):
 
             event_type = EventType.SYSTEM_STATUS
             data = {
-                "title": "Start With Tutorial",
+                "title": "快速上手教程",
                 "content": default_content,
                 "doc_type": "vaults",
                 "doc_id": vault_id,

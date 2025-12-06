@@ -76,11 +76,11 @@ class SmartTipGenerator:
                 data={
                     "doc_id": str(tip_id),
                     "doc_type": "tips",
-                    "title": "intelligence reminder",
+                    "title": "智能提示",
                     "content": tip_content,
                 },
             )
-            return {"doc_id": str(tip_id), "title": "intelligence reminder", "content": tip_content}
+            return {"doc_id": str(tip_id), "title": "智能提示", "content": tip_content}
 
         except Exception as e:
             logger.exception(f"Failed to generate smart tip: {e}")

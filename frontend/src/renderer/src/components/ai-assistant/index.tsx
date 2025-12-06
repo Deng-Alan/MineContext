@@ -147,23 +147,23 @@ const AIAssistant: FC<AIAssistantProps> = (props) => {
     [handleSendMessage]
   )
 
-  // Get workflow stage display text
+  // 获取工作流阶段的展示文案
   const getStageText = useCallback((stage?: string) => {
     switch (stage) {
       case 'intent_analysis':
-        return 'Analyzing intent'
+        return '正在分析意图'
       case 'context_gathering':
-        return 'Collecting context'
+        return '正在收集上下文'
       case 'execution':
-        return 'Executing'
+        return '正在执行'
       case 'reflection':
-        return 'Reflecting'
+        return '正在反思与改进'
       case 'completed':
-        return 'Completed'
+        return '已完成'
       case 'failed':
-        return 'Failed'
+        return '执行失败'
       default:
-        return 'Processing'
+        return '处理中'
     }
   }, [])
 
@@ -235,20 +235,20 @@ const AIAssistant: FC<AIAssistantProps> = (props) => {
             <div className="mb-6">
               <img src={chatEditIcon} alt="chat-edit" className="w-12 h-12" />
             </div>
-            <Text style={{ fontSize: 14, fontWeight: 500, marginBottom: 8 }}>I am your Context - Aware AI partner</Text>
+            <Text style={{ fontSize: 14, fontWeight: 500, marginBottom: 8 }}>我是你的上下文感知 AI 伙伴</Text>
             <Text type="secondary" style={{ textAlign: 'center', lineHeight: 1.5 }}>
-              Try asking me
+              可以试着这样问我：
             </Text>
             <div className="mt-6">
               <div
                 className="py-1 px-3  mb-2 cursor-pointer transition-all duration-200 text-[13px] text-gray-800 rounded-lg border border-gray-200 bg-white bg-opacity-50 hover:rounded-lg hover:border-gray-200 hover:bg-white hover:bg-opacity-50"
-                onClick={() => setMessage('Summarize my recent growth')}>
-                Summarize my recent growth
+                onClick={() => setMessage('帮我总结一下我最近一段时间的成长与收获')}>
+                帮我总结一下我最近一段时间的成长与收获
               </div>
               <div
                 className="py-1 px-3  mb-2 cursor-pointer transition-all duration-200 text-[13px] text-gray-800 rounded-lg border border-gray-200 bg-white bg-opacity-50 hover:rounded-lg hover:border-gray-200 hover:bg-white hover:bg-opacity-50"
-                onClick={() => setMessage('List what I have done in the last two hours')}>
-                List what I have done in the last two hours
+                onClick={() => setMessage('列一下我最近两小时大概做了哪些事情')}>
+                列一下我最近两小时大概做了哪些事情
               </div>
             </div>
           </div>
@@ -296,7 +296,7 @@ const AIAssistant: FC<AIAssistantProps> = (props) => {
                     size="small"
                     type="primary"
                     onClick={() => {
-                      // Retry the last message
+                      // 重新发送最后一条用户消息
                       const lastUserMessage = messages.findLast((msg) => msg.role === 'user')
                       if (lastUserMessage) {
                         const context = getCurrentContext()
@@ -304,7 +304,7 @@ const AIAssistant: FC<AIAssistantProps> = (props) => {
                       }
                     }}
                     style={{ fontSize: 12 }}>
-                    Retry
+                    重试
                   </Button>
                 </div>
               </div>
@@ -317,7 +317,7 @@ const AIAssistant: FC<AIAssistantProps> = (props) => {
         <div className="flex flex-col gap-2 bg-gray-50 rounded-xl p-3 border border-gray-200 transition-all duration-200">
           <div className="flex-1">
             <TextArea
-              placeholder={isLoading ? 'AI is thinking...' : 'Ask me anything'}
+              placeholder={isLoading ? 'AI 正在思考…' : '问我任何问题'}
               value={message}
               onChange={setMessage}
               onKeyPress={handleKeyPress}

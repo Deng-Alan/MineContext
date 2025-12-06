@@ -46,16 +46,16 @@ const Node = ({ node, dragHandle }: NodeRendererProps<VaultTreeNode>) => {
         } else if (key === 'new-folder') {
           const path = getVaultPath(node.data.id)
           if (path && path.length >= 6) {
-            Message.warning('Maximum folder depth of 5 levels reached.')
+            Message.warning('已达到最多 5 级文件夹嵌套深度。')
             return
           }
-          await createFolder('Untitled', node.data.id)
+          await createFolder('未命名文件夹', node.data.id)
           if (!node.isOpen) {
             node.toggle()
           }
         } else if (key === 'new-document') {
           await addVault({
-            title: 'Untitled',
+            title: '未命名文档',
             content: '',
             parent_id: node.data.id
           })
@@ -66,21 +66,21 @@ const Node = ({ node, dragHandle }: NodeRendererProps<VaultTreeNode>) => {
       }}>
       <Menu.Item key="rename" className="flex items-center">
         <img src={renameIcon} className="w-[16px]" style={{ marginRight: '6px' }} />
-        Rename
+        重命名
       </Menu.Item>
       <Menu.Item key="delete" className="flex items-center">
         <img src={deleteIcon} className="w-[16px]" style={{ marginRight: '6px' }} />
-        Delete
+        删除
       </Menu.Item>
       {isFolder && (
         <>
           <Menu.Item key="new-folder" className="flex items-center">
             <img src={folderStrokedIcon} className="w-[16px]" style={{ marginRight: '6px' }} />
-            New Folder
+            新建文件夹
           </Menu.Item>
           <Menu.Item key="new-document" className="flex items-center">
             <img src={fileIcon} className="w-[16px]" style={{ marginRight: '6px' }} />
-            New Document
+            新建文档
           </Menu.Item>
         </>
       )}
@@ -89,12 +89,22 @@ const Node = ({ node, dragHandle }: NodeRendererProps<VaultTreeNode>) => {
 
   const title = useMemo(() => {
     const t = get(node, 'data.title', '')
+
+    if (t === VaultTitle.Summary) {
+      return '总结'
+    }
+
+    if (t === 'Start With Tutorial' || t === '快速上手教程') {
+      return '快速上手教程'
+    }
+
     if (t.startsWith('Daily Report')) {
       const end = t.match(/\d{4}-\d{2}-\d{2}/)?.[0]
-      return end ? dayjs(end).format('MMM D, YYYY') : t
-    } else {
-      return t
+      // 使用更符合中文习惯的日期格式
+      return end ? dayjs(end).format('YYYY-MM-DD') : t
     }
+
+    return t
   }, [node.data])
 
   return (
@@ -295,9 +305,9 @@ const Sidebar = ({ className }: { className?: string }) => {
 
   const handleMenuClick = async (key: string) => {
     if (key === 'new-folder') {
-      await createFolder('Untitled')
+      await createFolder('未命名文件夹')
     } else if (key === 'new-document') {
-      await addVault({ title: 'Untitled', content: '' })
+      await addVault({ title: '未命名文档', content: '' })
     }
   }
 
@@ -305,11 +315,11 @@ const Sidebar = ({ className }: { className?: string }) => {
     <Menu onClickMenuItem={handleMenuClick} className="w-[180px] text-[12px]">
       <Menu.Item key="new-folder" className="flex">
         <img src={folderStrokedIcon} style={{ width: '16px', marginRight: '6px' }} />
-        New Folder
+        新建文件夹
       </Menu.Item>
       <Menu.Item key="new-document" className="flex">
         <img src={fileIcon} style={{ width: '16px', marginRight: '6px' }} />
-        New Document
+        新建文档
       </Menu.Item>
     </Menu>
   )
@@ -324,7 +334,7 @@ const Sidebar = ({ className }: { className?: string }) => {
           <Space direction="vertical" size={8} className="w-full">
             <div className="flex items-center justify-between">
               <Text className="text-[12px]" style={{ color: '#6E718C' }}>
-                Creation
+                创作
               </Text>
               <div className="flex justify-end gap-[8px] flex-1 items-center">
                 <Dropdown droplist={menu} trigger="click">

@@ -52,14 +52,14 @@ const RecordingStatsCard: React.FC<RecordingStatsCardProps> = ({ stats }) => {
       {/* Stats text */}
       <div className="text-xs text-[#86909C]">
         <span className="text-[#00B42A] font-medium">{stats.processed_screenshots}</span>
-        <span> screenshot{stats.processed_screenshots !== 1 ? 's' : ''} processed</span>
+        <span> 张截图已处理</span>
         {stats.failed_screenshots > 0 && (
           <>
             <span className="mx-2">•</span>
             <Tooltip
               content={
                 <div className="max-w-xs">
-                  <div className="font-medium mb-1">Recent Errors:</div>
+                  <div className="font-medium mb-1">最近错误：</div>
                   {stats.recent_errors.length > 0 ? (
                     <ul className="text-xs space-y-1">
                       {stats.recent_errors.map((error, index) => (
@@ -69,12 +69,12 @@ const RecordingStatsCard: React.FC<RecordingStatsCardProps> = ({ stats }) => {
                       ))}
                     </ul>
                   ) : (
-                    <span className="text-xs">No detailed error information available</span>
+                    <span className="text-xs">暂无详细错误信息</span>
                   )}
                 </div>
               }>
               <span className="text-[#FF4D4F] font-medium cursor-help underline decoration-dashed">
-                {stats.failed_screenshots} screenshot{stats.failed_screenshots > 1 ? 's' : ''} failed
+                {stats.failed_screenshots} 张截图处理失败
               </span>
             </Tooltip>
           </>

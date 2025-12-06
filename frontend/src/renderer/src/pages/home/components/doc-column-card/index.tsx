@@ -46,7 +46,7 @@ const DocColumn = ({ vault }: DocColumnProps) => {
         <button
           className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-[#7075FF] font-pingfang-sc text-[12px] font-medium leading-[20px] tracking-[0.036px] cursor-pointer"
           onClick={handleNavigateToVault}>
-          View
+          查看
         </button>
       </div>
     </div>
@@ -55,7 +55,7 @@ const DocColumn = ({ vault }: DocColumnProps) => {
 
 const DocColumnsCard: React.FC<DocColumnBoxProps> = ({ vaultsList }) => {
   return (
-    <CardLayout title="Recent creation" emptyText="No creation in the last 7 days. " isEmpty={vaultsList.length === 0}>
+    <CardLayout title="最近创作" emptyText="最近 7 天内没有新的创作。" isEmpty={vaultsList.length === 0}>
       <div className="flex flex-col items-start gap-[4px] self-stretch">
         {vaultsList.map((vault) => (
           <DocColumn key={vault.id} vault={vault} />

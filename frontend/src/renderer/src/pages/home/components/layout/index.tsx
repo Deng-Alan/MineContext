@@ -26,7 +26,7 @@ const CardLayout: FC<LatestActivityCardProps> = (props) => {
             <div
               className="text-[var(--text-color-text-2,#3F3F51)] font-['PingFang SC'] text-xs leading-[20px] cursor-pointer font-medium"
               onClick={seeAllClick}>
-              See all
+              查看全部
             </div>
           ) : null}
         </div>
